@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/shop-homepage.css" rel="stylesheet">
 <link href="css/Supernice.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
@@ -237,14 +238,54 @@ text-decoration: none;
 text-decoration: underline;
 }
 
+.thumbnail{
+  position: relative;
+}
 
+/*anchor modifications*/
+a {
+  color: #559dae;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #427480;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.thumbnail:hover,
+.thumbnail:focus {
+ background-color: #aed0d8;
+}
+
+.ratings{
+  color: #435ebc;
+}
+.thumbnail:hover .ratings,
+.thumbnail:focus .ratings{
+  color:#698ce3;
+}
+
+.thumbnail:hover .caption,
+.thumbnail:focus .caption{
+  color:#fefefe;
+}
+.thumbnail:hover .caption a,
+.thumbnail:focus .caption a{
+  color:#fefefe;
+}
     </style>
 
   </head>
 
   <body id="page-top">
 
-
+<!-- Navegacion -->
   <nav class="navbar navbar-default secondary-navbar">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -380,129 +421,59 @@ text-decoration: underline;
     </div>
   </nav>
 
-
-<div style="height: 40px"></div>
-
-    <section id="nosotros-container">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-            
-            <h4 class="nosotros-heading">Creatividad</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-          </div>
-          <div class="col-sm-4 hidden-xs">
-            <h4 class="nosotros-heading">Bla bla bla</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-          </div>
-          <div class="col-sm-4 hidden-xs">
-            <h4 class="nosotros-heading">Bla bla bla</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<div style="height: 40px"></div>
-    <h2 style="text-align: center;">Categorias</h2>
+<!-- Fin de navegacion -->
+    <h2 style="text-align: center;">Productos en venta</h2>
     <section id="productos-container">
+        
+
+
       <div class="container">
         <div class="row">
+
+        <div class="col-md-3">
+                <p class="lead">Shop Name</p>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Category 1</a>
+                    <a href="#" class="list-group-item">Category 2</a>
+                    <a href="#" class="list-group-item">Category 3</a>
+                </div>
+            </div>
+
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-sm-4 col-lg-4 col-md-4">
           
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
+                        <div class="thumbnail">
+                            <a href="#" style="width: 100%; height: 100%; display: block; position: absolute; top: 0px; left: 0px">
+            </a>      
+                            <div  style="overflow-y: hidden; height: 220px;">
+                              <img src="img/cool1.jpg" alt="" class="img-responsive">
+                            </div>
+                            <div class="caption">
+                                <h4 class="pull-right">$199.00 MX</h4>
+                                <h4><a href="#">Producto </a></h4>
+                                <p>Impresion de pintura en la mayor calidad</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reseñas</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
           </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 " >
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-        </div>
+</div>
+</div>
+</div>
+
+      
       </div>
     </section>
 
-    <div style="height: 40px"></div>
-    <div class="container-fluid" style="background-color: #305f7a; 
-  padding: 30px 0px 40px 0px;">
-      <a class="abre-tienda" href="#">
-        <h2 style="text-align: center;">Empiece a vender con nosotros</h2>
-        <h4 style="text-align: center;">Unase a las miles de personas que confian en nuestra plataforma</h4>
-        <h4 class="link" style="text-align: center;">Crea tu tienda hoy</h4>
-      </a>
-    </div>
-
-    <div style="height: 40px"></div>
-    <h2 style="text-align: center;">Populares</h2>
-    <section id="productos-container">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 " >
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery.min.js"></script>
