@@ -1,3 +1,7 @@
+
+@php
+use Illuminate\Support\Facades\DB;
+@endphp
 @php
   $websiteRoot = 'http://localhost:8000'
 @endphp
@@ -122,36 +126,16 @@
         <div class="collapse navbar-collapse">
           <div class="row bottom-navbar-row">
             <div class="col-sm-10 col-sm-offset-1">
+              @php
+                $categorias = DB::table('categorias')->get();
+              @endphp
+              @foreach($categorias as $categoria)
               <div class="col-sm-2">
-                <a href="{{$websiteRoot}}/busqueda/categoria/1" class="categories-item-container">
-                  <span class="categories-item">Ropa y Calzado</span>
+                <a href="{{$websiteRoot}}/busqueda/categoria/{{$categoria->id}}" class="categories-item-container">
+                  <span class="categories-item">{{$categoria->nombre}}</span>
                 </a>
               </div>
-              <div class="col-sm-2">
-                <a href="{{$websiteRoot}}/busqueda/categoria/2" class="categories-item-container">
-                  <span class="categories-item">Accesorios y Joyeria</span>
-                </a>
-              </div>
-              <div class="col-sm-2">
-                <a href="{{$websiteRoot}}/busqueda/categoria/3" class="categories-item-container">
-                  <span class="categories-item">Pinturas y Esculturas</span>
-                </a>
-              </div>
-              <div class="col-sm-2">
-                <a href="{{$websiteRoot}}/busqueda/categoria/4" class="categories-item-container">
-                  <span class="categories-item">Fiestas y Eventos</span>
-                </a>
-              </div>
-              <div class="col-sm-2">
-                <a href="{{$websiteRoot}}/busqueda/categoria/5" class="categories-item-container">
-                  <span class="categories-item">Hogar y Decoración</span>
-                </a>
-              </div>
-              <div class="col-sm-2">
-                <a href="{{$websiteRoot}}/busqueda/categoria/6" class="categories-item-container">
-                  <span class="categories-item">Herramientas y Utilidades</span>
-                </a>
-              </div>
+              @endforeach
             </div>
           </div>
         </div><!-- /.navbar-collapse -->
@@ -163,12 +147,9 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li> <a href="#">Ropa y Calzado</a></li>
-              <li> <a href="#">Accesorios y Joyeria</a></li>
-              <li> <a href="#">Pinturas y Esculturas</a></li>
-              <li> <a href="#">Fiestas y Eventos</a></li>
-              <li> <a href="#">Hogar y Decoración</a></li>
-              <li> <a href="#">Herramientas y Utilidades</a></li>
+              @foreach($categorias as $categoria)
+                <li><a href="{{$websiteRoot}}/busqueda/categoria/{{$categoria->id}}">{{$categoria->nombre}}</a></li>  
+              @endforeach
             </ul>
           </li>
           <li role="separator" class="divider"></li>
