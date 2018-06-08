@@ -12,15 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('landing');
-});
+    return view('layouts/app');
+})->name('landing');
 
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/register', function () {
-    return view('register');
-});
+
+
 
 
 
@@ -35,5 +31,24 @@ Route::get('/busqueda/categoria/{id}', function ($id) {
 
 
 Route::get('producto/details/{producto?}', function ($producto = '') {
-    return view('detalle', compact('producto'));
+    return view('detalle', compact('producto') );
 });
+
+Auth::routes();
+
+/*
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('register');
+})->name('register');
+
+Route::get('/logout', function () {
+    return view('register');
+})->name('register');
+
+*/
+
+Route::get('/home', 'HomeController@index')->name('home');

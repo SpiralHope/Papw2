@@ -1,9 +1,9 @@
 
-<div class="col-sm-4 col-lg-4 col-md-4">
+<div class="col-sm-4 col-lg-3 col-md-3">
     <div class="thumbnail">
         <a href="http://localhost:8000/producto/details/{{$thumb->id}}" style="width: 100%; height: 100%; display: block; position: absolute; top: 0px; left: 0px">
         </a>      
-        <div  style="overflow-y: hidden; height: 220px;">
+        <div  style="overflow-y: hidden; height: 120px;">
             <img src="http://localhost:8000/{{$thumb->img}}" alt="" class="img-responsive">
         </div>
         <div class="caption">

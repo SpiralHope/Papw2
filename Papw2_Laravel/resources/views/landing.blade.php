@@ -12,15 +12,15 @@
           <div class="col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2">
             
             <h4 class="nosotros-heading">Creatividad</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            <p class="text-muted">Encuentra productos ofrecidos directamente por los mismos creadores. Veras una calidad de productos diseñados con un cuidado y calidad que solo veras aqui.</p>
           </div>
           <div class="col-sm-4 hidden-xs">
-            <h4 class="nosotros-heading">Bla bla bla</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            <h4 class="nosotros-heading">Variedad</h4>
+            <p class="text-muted">Gracias a la cantidad de artistas y vendedores que se unen cada dia a nuestro sitio, podras encontrar de todo. Ademas, tenemos distintas categorias para que encuentres lo que busques de manera veloz.</p>
           </div>
           <div class="col-sm-4 hidden-xs">
-            <h4 class="nosotros-heading">Bla bla bla</h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            <h4 class="nosotros-heading">Facil y Rapido</h4>
+            <p class="text-muted">En solo unos clicks podras agregar a tu carrito los productos que gustes. Asi de facil tambien puedes empezar a vender tus productos en nuestra tienda.</p>
           </div>
         </div>
       </div>
@@ -31,6 +31,7 @@
     <section id="productos-container">
       <div class="container">
         <div class="row">
+
           
           <div class="col-md-2 col-xs-4 ">
             <a href="#" class="productos-item">
@@ -68,6 +69,8 @@
               <span> Joyeria</span>
             </a>
           </div>
+
+
         </div>
       </div>
     </section>
@@ -87,6 +90,8 @@
     <section id="productos-container">
       <div class="container">
         <div class="row">
+
+
           <div class="col-md-2 col-xs-4 ">
             <a href="#" class="productos-item">
               <img src="img/joyeria.jpg"  style="width: 100%">
@@ -123,6 +128,8 @@
               <span> Joyeria</span>
             </a>
           </div>
+
+
         </div>
       </div>
     </section>

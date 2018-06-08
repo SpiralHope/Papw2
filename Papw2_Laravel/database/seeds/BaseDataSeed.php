@@ -14,7 +14,7 @@ class BaseDataSeed extends Seeder
     {
         //
 
- 		DB::table('categorias')->insert([
+        DB::table('categorias')->insert([
             ['nombre' => "Ropa y Calzado"],
             ['nombre' => "Accesorios y Joyeria"],
             ['nombre' => "Pinturas y Esculturas"],
@@ -23,46 +23,43 @@ class BaseDataSeed extends Seeder
             ['nombre' => "Herramientas y Utilidades"]
         ]);
 
-		DB::table('usuario')->insert([
-            'correo' => "hugo@mail.com",
-            'password' => "123456789",
+
+		DB::table('users')->insert([
+            'name' => "Hugo",
+            'email' => "hugo_incorporated@hotmail.com",
+            'password' => Hash::make('123456'),
             'biografia' => "Solo soy un chico, o chica, un helicoptero, ya no se que soy :sad-face:",
-            'rango' => "General",
-            'ventas-totales' =>  0,
-            'img' => "/img/user.jpg"
+            'role' =>  "admin",
         ]);
 
-		DB::table('producto')->insert([
-            'id-categoria' => 1,
-            'id_usuario' => 1,
+        DB::table('users')->insert([
+            'name' => "Samhara",
+            'email' => "Samy@hotmail.com",
+            'password' => Hash::make('123456789'),
+            'biografia' => "NoImporta",
+            'role' =>  "vendedor",
+        ]);
+
+
+        DB::table('productos')->insert([
+            'id_categoria' => 1,
+            'id_usuario' => 2,
             'ranking' => 0,
-            'reviews' => 0,
-            'activo' =>  true,
-            'nombre' => "Pinturas Misticas",
-            'precio' => 179,
-            'desc-corta' => "Del los reinos mas lejanos",
-            'detalles' => "Medida 19cmx25cm"
-
+            'nombre' => 'Artesania Ansestral',
+            'precio' => 250.0,
+            'desc_corta' => "Mhe",
+            'detalles' => "Mhe"
         ]);
 
-
-        DB::table('producto-imagenes')->insert([
-        	[
-	            'id-producto' => 1,
-	            'img-url' => "/img/cool1.jpg",
-	            'principal' => true
-        	],
-        	[
-	          	'id-producto' => 1,
-	            'img-url' => "/img/Back01.jpg",
-	            'principal' => false
-        	],
-        	[
-	            'id-producto' => 1,
-	            'img-url' => "/img/cool1.jpg",
-	            'principal' => false
-        	]
+        DB::table('producto_imgs')->insert([
+            [ 'id_producto' => 1, 'img_url' => 'testImg/01.png' ],
+            [ 'id_producto' => 1, 'img_url' => 'testImg/02.png' ],
+            [ 'id_producto' => 1, 'img_url' => 'testImg/03.png' ],
+            [ 'id_producto' => 1, 'img_url' => 'testImg/04.png' ],
         ]);
+
         
+
+            
     }
 }

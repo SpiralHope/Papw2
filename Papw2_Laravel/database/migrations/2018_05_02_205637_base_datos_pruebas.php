@@ -13,6 +13,8 @@ class BaseDatosPruebas extends Migration
      */
     public function up()
     {
+
+        /*
         Schema::create('usuario', function (Blueprint $table) {
             $table->increments('id');
             $table->string('correo',250);
@@ -33,8 +35,7 @@ class BaseDatosPruebas extends Migration
             $table->integer('id-categoria');
             $table->integer('id_usuario');
             $table->integer('ranking');
-            $table->integer('reviews');
-
+            
             $table->boolean('activo');
             $table->string('nombre',250);
             $table->decimal('precio', 12, 2);
@@ -73,6 +74,7 @@ class BaseDatosPruebas extends Migration
             $table->string('comentario',250);
             $table->timestamps();
         });
+        */
     }
 
     /**
@@ -82,6 +84,7 @@ class BaseDatosPruebas extends Migration
      */
     public function down()
     {
+        /*
         Schema::dropIfExists('usuario');
         Schema::dropIfExists('categorias');
         Schema::dropIfExists('producto');
@@ -89,6 +92,65 @@ class BaseDatosPruebas extends Migration
         Schema::dropIfExists('transaccion');
         Schema::dropIfExists('transaccion-detalle');
         Schema::dropIfExists('review');
+        */
 
     }
 }
+
+
+
+
+
+/*
+////////////
+
+    DB::table('categorias')->insert([
+            ['nombre' => "Ropa y Calzado"],
+            ['nombre' => "Accesorios y Joyeria"],
+            ['nombre' => "Pinturas y Esculturas"],
+            ['nombre' => "Fiestas y Eventos"],
+            ['nombre' => "Hogar y Decoracion"],
+            ['nombre' => "Herramientas y Utilidades"]
+        ]);
+
+        DB::table('usuario')->insert([
+            'correo' => "hugo@mail.com",
+            'password' => "123456789",
+            'biografia' => "Solo soy un chico, o chica, un helicoptero, ya no se que soy :sad-face:",
+            'rango' => "General",
+            'ventas-totales' =>  0,
+            'img' => "/img/user.jpg"
+        ]);
+
+        DB::table('producto')->insert([
+            'id-categoria' => 1,
+            'id_usuario' => 1,
+            'ranking' => 0,
+            'reviews' => 0,
+            'activo' =>  true,
+            'nombre' => "Pinturas Misticas",
+            'precio' => 179,
+            'desc-corta' => "Del los reinos mas lejanos",
+            'detalles' => "Medida 19cmx25cm"
+        ]);
+
+
+        DB::table('producto-imagenes')->insert([
+            [
+                'id-producto' => 1,
+                'img-url' => "/img/cool1.jpg",
+                'principal' => true
+            ],
+            [
+                'id-producto' => 1,
+                'img-url' => "/img/Back01.jpg",
+                'principal' => false
+            ],
+            [
+                'id-producto' => 1,
+                'img-url' => "/img/cool1.jpg",
+                'principal' => false
+            ]
+        ]);
+
+*/

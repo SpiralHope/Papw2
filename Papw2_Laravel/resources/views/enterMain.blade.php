@@ -8,8 +8,9 @@
     <meta name="author" content="">
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/Supernice.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+	<link href="{{asset('css/Supernice.css')}}" rel="stylesheet">
+
 
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -22,58 +23,7 @@
 
     <style type="text/css">
     
-    .brand-logo{
-      fill:  #154489; 
-    }
-    .brand-logo:hover{
-      fill: #4382dc; 
-    }
-
-    .brand-text{
-      fill: #154489; 
-    }
-    .brand-text:hover{
-      fill: #154489; 
-    }
-
-    .small-text{
-      font-size: 12px;
-    }
-	.outer-wrapper { 
-	display: table;
-	width: 100%;
-	height: 100%;
-	}
-
-	.inner-wrapper {
-	  display:table-cell;
-	  vertical-align:middle;
-	  padding:15px;
-	}
-	.login-btn { position:fixed; top:15px; right:15px; }
-.form-body {
-
-    padding: 30px;
-    font-family: "Montserrat";
-    border-top: 1px solid #d8dee2;
-    border-radius: 5px;
-    font-size: 14px;
-    background-color: #fff;
-    border: 1px solid #d8dee2;
-
-}
-
-.no-registrado-body {
-
-    padding: 5px;
-    font-family: "Montserrat";
-    border-top: 1px solid #d8dee2;
-    border-radius: 5px;
-    font-size: 14px;
-    background-color: #fff;
-    border: 1px solid #d8dee2;
-
-}
+    
 
     </style>
 </head>
