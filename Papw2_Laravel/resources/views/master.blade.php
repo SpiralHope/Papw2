@@ -33,6 +33,9 @@ use Illuminate\Support\Facades\DB;
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
 
+
+    @stack('styles')
+
     <!--Scripts -->
     <!-- Bootstrap core JavaScript -->
     <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -42,6 +45,8 @@ use Illuminate\Support\Facades\DB;
     <!-- Contact form JavaScript -->
     <script src="{{asset('js/jqBootstrapValidation.js')}}"></script>
     <script src="{{asset('js/agency.min.js')}}"></script>
+
+    @stack('scripts')
 
   </head>
 
@@ -57,7 +62,7 @@ use Illuminate\Support\Facades\DB;
           <div class="navbar-header  col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-3">
             <div class="navbar-brand-container">
               <!--Brand Logo-->
-                
+                @include('logo')
               <!--End Brand Logo-->
             </div>
 
@@ -73,12 +78,12 @@ use Illuminate\Support\Facades\DB;
         </div>
 
         <div class="col-md-4 col-sm-8">
-          <form class="basic-search-form" >
+          <form class="basic-search-form" method="GET" action="{{route('busqueda')}}">
             <div class="form-group">
               <div class="input-group basic-search-form-group">
-                <input type="text" class="form-control" placeholder="Buscar articulo en la tienda..." aria-label="Busqueda" aria-describedby="basic-addon2">
+                <input type="text" class="form-control" placeholder="Buscar articulo en la tienda..." aria-label="Busqueda" aria-describedby="basic-addon2" name="nombre">
                 <div class="input-group-btn">
-                  <button class="btn btn-secondary basic-search-form-button"  type="button">Buscar</button>
+                  <button class="btn btn-secondary basic-search-form-button"  type="submit">Buscar</button>
                 </div>
               </div>
             </div>
@@ -88,21 +93,46 @@ use Illuminate\Support\Facades\DB;
         <div class="col-md-6 col-md-offset-0 col-sm-12 hidden-xs" id="account-nav-container">
           <div class="col-sm-11">
               <ul class="nav navbar-nav navbar-right account-nav ">
-                <li class="sell-button">
-                  <a href="#">Vender en la tienda</a>
-                </li>
-                <li class="register-button">
-                  <a href="{{$websiteRoot}}/register">Registrarse</a>
-                </li>
-                <li class="enter-button">
-                  <a href="{{$websiteRoot}}/login">Entrar </a>
-                </li>
-                <li class="shopping-cart-button">
-                  <a href="{{$websiteRoot}}/shoping/cart" class="text-center" >
-                    <span class="glyphicon glyphicon-shopping-cart" style="font-size: 16px"></span>
-                    <br><span class="small-text">Carro</span>
-                  </a>
-                </li>
+                @auth
+                  @if(Auth::user()->esVendedor() || Auth::user()->esAdmin())
+                  <li class="sell-button">
+                    <a href="{{route('dashboard')}}">Dashboard</a>
+                  </li>
+                  @endif
+                  <li class="sell-button">
+                    <a href="{{route('perfil')}}">Perfil</a>
+                  </li>
+                  <li class="sell-button">
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Salir') }}
+                    </a>
+                  </li>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+                  
+                  <li class="shopping-cart-button">
+                    <a href="{{route('carrito')}}" class="text-center" >
+                      <span class="glyphicon glyphicon-shopping-cart" style="font-size: 16px"></span>
+                      <br><span class="small-text">Carro</span>
+                    </a>
+                  </li>
+                  
+                 
+                @endauth
+                @guest
+                  <li class="sell-button">
+                    <a href="{{ route('register2') }}">Vender en la tienda</a>
+                  </li>
+                  <li class="register-button">
+                    <a href="{{route('register')}}">Registrarse</a>
+                  </li>
+                  <li class="enter-button">
+                    <a href="{{route('login')}}">Entrar </a>
+                  </li>
+                @endguest
               </ul>
           </div>
         </div>
@@ -119,7 +149,7 @@ use Illuminate\Support\Facades\DB;
               @endphp
               @foreach($categorias as $categoria)
               <div class="col-sm-2">
-                <a href="{{$websiteRoot}}/busqueda/categoria/{{$categoria->id}}" class="categories-item-container">
+                <a href="{{route('busqueda').'?categoria='.$categoria->id}}" class="categories-item-container">
                   <span class="categories-item">{{$categoria->nombre}}</span>
                 </a>
               </div>
@@ -136,15 +166,29 @@ use Illuminate\Support\Facades\DB;
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
             <ul class="dropdown-menu">
               @foreach($categorias as $categoria)
-                <li><a href="{{$websiteRoot}}/busqueda/categoria/{{$categoria->id}}">{{$categoria->nombre}}</a></li>  
+                <li><a href="{{route('busqueda').'?categoria='.$categoria->id}}">{{$categoria->nombre}}</a></li>  
               @endforeach
             </ul>
           </li>
           <li role="separator" class="divider"></li>
-          <li> <a href="#">Vender en la tienda</a></li>
-          <li> <a href="/Papw2/Registrase.html">Registrarse</a></li>
-          <li> <a href="/Papw2/Entrar.html">Entrar </a></li>
-          <li> <a href="#"><span class="glyphicon glyphicon-shopping-cart" style="font-size: 16px"></span><span class="small-text">Carro</span></a></li>
+          @guest
+            <li><a href="{{ route('register2') }}">Vender en la tienda</a></li>
+            <li><a href="{{route('register')}}">Registrarse</a></li>
+            <li><a href="{{route('login')}}">Entrar</a></li>
+          @endguest
+          @auth
+            <li><a href="{{route('dashboard')}}">Dashboard</a></li>
+            <li><a href="{{route('perfil')}}">Perfil</a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Salir') }}</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <li>
+              <a href="{{route('carrito')}}">
+                <span class="glyphicon glyphicon-shopping-cart" style="font-size: 16px"></span><span class="small-text">Carro</span>
+              </a>
+            </li>
+          @endauth
         </ul>
       </div> <!-- /.navbar-collapse -->
     </div>
@@ -166,6 +210,7 @@ use Illuminate\Support\Facades\DB;
     </footer>
 
     
+    @stack('endScripts')
     
   </body>
 

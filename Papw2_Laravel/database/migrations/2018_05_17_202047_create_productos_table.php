@@ -18,7 +18,8 @@ class CreateProductosTable extends Migration
 
             $table->integer('id_categoria')->unsigned();
             $table->integer('id_usuario')->unsigned();
-            $table->integer('ranking');
+            $table->integer('ranking')->default(-1);
+            $table->integer('reviews')->default(0);;
 
             $table->string('nombre');
             $table->decimal('precio', 12, 2);

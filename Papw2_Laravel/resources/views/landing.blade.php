@@ -1,8 +1,73 @@
+@php
+
+    use App\Producto;
+    use App\User;
+    use App\Comentario;
+    use App\Categoria;
+
+    use App\CarritoDetalle;
+    use Carbon\Carbon;
+
+    $categorias = App\Categoria::all();
+
+@endphp
+
+
 @extends('master')
 
-@section('title', 'detalle')
+@section('title', 'Landing')
 
 @section('content')
+
+@push('styles')
+        <style type="text/css">
+            .productos-item img{
+              width: 100%;
+            }
+
+            .producto-preview{
+              width: 100%;
+              position: relative;
+              height: 160px;
+              border: 2px solid #b1c7d4;
+              border-radius: 5px;
+              background-color: #75a6c2;
+              overflow: hidden;
+              color: white;
+            }
+
+            .producto-preview-anchor{
+              display: block;
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0px;
+              left: 0px;
+            }
+
+            .producto-preview-img{
+              width: 100%;
+              height: 120px;
+              overflow: hidden;
+            }
+
+            .producto-preview-img img{
+              width: 100%;
+            }
+
+            .producto-preview-nombre{
+              width: 100%;
+              height: 40px;
+              padding: 8px 0px;
+              text-align: center;
+            }
+
+            .producto-preview-nombre span{
+              display: block;
+            }
+
+        </style>
+@endpush
 
 <div style="height: 40px"></div>
 
@@ -32,44 +97,32 @@
       <div class="container">
         <div class="row">
 
-          
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 " >
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
+         @foreach( $categorias as $categoria)
+            <div class="col-md-2 col-xs-4 ">
+              
+              <div class="producto-preview">
+                @php
+                  $producto = App\Producto::where('id_categoria', $categoria->id)->where('valid', 1);
+                @endphp
+                @if($producto->count()>0)
+                  @php
+                    $producto = $producto->orderBy('ranking', 'desc');
+                    $producto = $producto->first();
+                    $img = $producto->imagenes()->first();
+                  @endphp
+                <a href="{{route('producto').'/' .$producto->id}}" class="producto-preview-anchor">
 
+                </a>
+                <div class="producto-preview-img">
+                  <img src="{{URL::to('/') . '/' . $img->img_url}}" >
+                </div>
+                <div class="producto-preview-nombre">
+                  <span>{{$categoria->nombre}}</span>
+                </div>
+                @endif
+              </div>
+            </div>
+          @endforeach
 
         </div>
       </div>
@@ -87,47 +140,40 @@
 
     <div style="height: 40px"></div>
     <h2 style="text-align: center;">Populares</h2>
+    <div style="height: 40px"></div>
     <section id="productos-container">
       <div class="container">
         <div class="row">
 
+           @foreach( $categorias as $categoria)
+            <div class="col-md-2 col-xs-4 ">
+              
+              <div class="producto-preview">
+                @php
+                  $producto = App\Producto::where('id_categoria', $categoria->id)->where('valid', 1);
+                @endphp
+                @if($producto->count()>0)
+                  @php
+                    $producto = $producto->orderBy('reviews', 'desc');
+                    $producto = $producto->first();
+                    $img = $producto->imagenes()->first();
+                  @endphp
+                <a href="{{route('producto').'/' .$producto->id}}" class="producto-preview-anchor">
 
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 " >
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
-          <div class="col-md-2 col-xs-4 ">
-            <a href="#" class="productos-item">
-              <img src="img/joyeria.jpg"  style="width: 100%">
-              <span> Joyeria</span>
-            </a>
-          </div>
+                </a>
+                <div class="producto-preview-img">
+                  <img src="{{URL::to('/') . '/' . $img->img_url}}" >
+                </div>
+                <div class="producto-preview-nombre">
+                  <span>{{$categoria->nombre}}</span>
+                </div>
+                @endif
+              </div>
+            </div>
+          @endforeach
+          
+
+        </div>
 
 
         </div>

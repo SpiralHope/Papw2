@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role'
     ];
 
     /**
@@ -51,6 +51,18 @@ class User extends Authenticatable
 
     public function carrito(){
         return $this->hasMany('App\CarritoDetalle', 'id_usuario', 'id');
+    }
+
+    public function imagen(){
+        return (trim($this->img )== '' ? config('globals.default_image') : trim( $this->img) );
+    }
+
+    public function biografia(){
+        $bio = $this->biografia;
+        if($bio==null){
+            $bio = "No ha estrito biografia aun.";
+        }
+        return $bio;
     }
 
 }

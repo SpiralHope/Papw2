@@ -18,7 +18,6 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-
             
             $table->string('biografia')->default('');
             $table->integer('ventas_totales')->default(0);

@@ -2,7 +2,7 @@
 @section('form')
     <form role="form" class="form-body" method="POST" action="{{ route('register') }}">
         @csrf
-        <span class="text-center"><h2>Registrar</h2></span>
+        <span class="text-center"><h2>Registrar Usuario</h2></span>
         <div class="form-group">
             <label class="control-label label-form" for="name">Nombre:</label>
             <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label class="control-label label-form" for="email">Correo:</label>
-            <input is="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="">
+            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="">
             @if ($errors->has('email'))
                 <span class="invalid-feedback">
                     <strong>Este correo ya ha sido registrado</strong>
@@ -44,4 +44,6 @@
 @section('footer')
     <h4 class="text-center"  style="margin-bottom: 20px; ">¿Ya tienes una cuenta?</h4>
     <h4 class="text-center" ><a  href="{{route('login')}}" class="text-center"  style="margin-bottom: 20px; ">Ingresa aqui!</a></h4>
+    <h4 class="text-center"  style="margin-bottom: 20px; ">¿Quieres vender con nosotros?</h4>
+    <h4 class="text-center" ><a  href="{{route('register2')}}" class="text-center"  style="margin-bottom: 20px; ">Registrate aqui!</a></h4>
 @endsection

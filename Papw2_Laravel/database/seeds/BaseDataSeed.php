@@ -41,6 +41,7 @@ class BaseDataSeed extends Seeder
         ]);
 
 
+        /*
         DB::table('productos')->insert([
             'id_categoria' => 1,
             'id_usuario' => 2,
@@ -57,7 +58,7 @@ class BaseDataSeed extends Seeder
             [ 'id_producto' => 1, 'img_url' => 'testImg/03.png' ],
             [ 'id_producto' => 1, 'img_url' => 'testImg/04.png' ],
         ]);
-
+        */
         
 
             

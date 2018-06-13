@@ -212,6 +212,10 @@ text-decoration: underline;
 
 .thumbnail{
   position: relative;
+  height: 280px;
+  z-index: 20;
+  padding: 0px;
+  overflow: hidden;
 }
 
 /*anchor modifications*/
@@ -237,7 +241,16 @@ a:focus {
 
 .ratings{
   color: #435ebc;
+  height: 20px;
+  padding-left: 14px;
+  padding-right: 14px;
 }
+
+.thumbnail .caption{
+  padding-left: 14px;
+  padding-right: 14px; 
+}
+
 .thumbnail:hover .ratings,
 .thumbnail:focus .ratings{
   color:#698ce3;
@@ -267,4 +280,6 @@ a:focus {
 /*Carousel css*/
 
 /* end caroussel css*/
-
+.categories-item-container:hover {
+    border-bottom: 3px solid #154489;
+}

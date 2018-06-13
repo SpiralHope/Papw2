@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -67,6 +70,40 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => 'user',
         ]);
+    }
+
+    protected function createVendedor(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => 'vendedor',
+        ]);
+    }
+
+    public function showRegistrationFormVendedor()
+    {
+        return view('auth.registerVendedor');
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function registerVendedor(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->createVendedor($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 }
